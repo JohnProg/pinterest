@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} title {% endblock %}
+
+{% block styles %}
+{{ block.super }}
+<link rel="stylesheet" href="{{STATIC_URL}}css/loader.css"/>
+{% endblock styles %}
+
+{% block header %}
+	<nav class="nav-main-header">
+		<ul>
+			<li>
+				<figure>
+					<a href="/">
+						<img src="{{STATIC_URL}}images/logo.png" alt="Logo">
+					</a>
+				</figure>
+			</li>
+			<li class="search-section">
+				<form action="">		
+					<div class="input-group">
+			            <input 	type="text" 
+			            		class="form-control" 
+			            		placeholder="Buscar..." 
+			            		name="q" 
+			            		style="padding:6px 6px;"
+			            		ng-model='search'>
+			            <div class="input-group-btn">
+			                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+			            </div>
+			        </div>
+				</form>
+			</li>
+			<li class="filter-section">
+				<ul class="tab-options">
+					<li><a href="" class="btn btn-lg btn-default active " role="button"><i class="fa fa-th"></i></a></li>
+					<li><a href="" class="btn btn-lg btn-default" role="button"><i class="fa fa-th-list"></i></a></li>
+					<li><a href="" class="btn btn-lg btn-default" role="button"><i class="fa fa-group"></i></a></li>
+				</ul>
+			</li>
+			<li class="account-section">
+				<ul class="buttons-options">
+					<li><a href="" id="login" data-toggle="modal" data-target="#myModal" class="">LOGIN</a></li>
+					<li><a href="" id="signup" data-toggle="modal" data-target="#myModal2" class="">SIGN UP</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+{% endblock %}
+
+{% block content %}
+	<div class="loader" ng-if='items == undefined'>
+		<div class="loading">
+			<div>L</div>
+			<div>O</div>
+			<div>A</div>
+			<div>D</div>
+			<div>I</div>
+			<div>N</div>
+			<div>G</div>
+		</div>
+	</div>
+	<div id="freewall" class="free-wall">
+	    <div class="brick" ng-cloak ng-repeat='item in items | filter: search' ng-if='items.length > 0 && items[0].photo'>
+	        <a href="" ng-click='getMoreItemDetail($index)'>
+	        	<img src="{[{ item.photo }]}" width="100%">
+	        </a>
+	        <div class="info">
+	            <h3>{[{ item.name }]}</h3>
+	            <ul class="social-media">
+                  <li><a href="" class="fa fa-facebook"></a></li>
+                  <li><a href="" class="fa fa-twitter"></a></li>
+                  <li><a href="" class="fa fa-google-plus"></a></li>
+                </ul>
+	        </div>
+	    </div>
+	</div>	
+{% endblock%}

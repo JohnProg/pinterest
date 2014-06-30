@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en" ng-app='myApp'>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-translate-customization" content="844905a313ae8f1c-564511b2411c2c2f-g61204b8f4df1de87-d">
+	<title>{% block title %} title {% endblock%}</title>
+    {% block styles %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}css/style.css"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/login.css"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/pinterest-style.css"/>
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="{{STATIC_URL}}css/font-awesome.css">
+
+    {% endblock styles %}
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-41386990-1', 'tumblr.com');
+      ga('send', 'pageview');
+
+    </script>
+</head>
+<body ng-controller='mainCtrl'>
+
+    <section class="container">
+
+        <header>
+          {% block header %}{% endblock %}
+        </header>
+
+        <section id="section-container">
+             {% block content %}                
+             {% endblock %}
+        </section>
+        
+        <div class="botton-section">
+          <img src="https://chariotsf.com/assets/skyline-bb83cd523850983cc7e886c73aedd872.png" alt="">
+          <div class="border-box"></div>
+        </div>
+        <footer class="footer">          
+          <nav class="container">
+            <ul class="related-pages col-md-9">
+              <li><a href="">About Us</a></li>
+              <li><a href="">Companies</a></li>
+              <li><a href="">FAQ</a></li>
+              <li><a href="">Careers</a></li>
+              <li><a href="">Privacy</a></li>
+              <li><a href="">Terms</a></li>
+            </ul>
+            <ul class="social-network col-md-3">
+              <li><a href="" class="fa fa-2x fa-facebook"></a></li>
+              <li><a href="" class="fa fa-2x fa-twitter"></a></li>
+              <li><a href="" class="fa fa-2x fa-pinterest"></a></li>
+            </ul>
+            <p class="copyright">© 2014 Media, Inc.</p>       
+          </nav>             
+        </footer>
+
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="row">
+                <form class="form-signin mg-btm">
+                  <h3 class="heading-desc">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                Login</h3>
+                <div class="social-box">
+                  <div class="row mg-btm">
+                         <div class="col-md-12">
+                            <a href="#" class="btn btn-primary btn-block">
+                              <i class="icon-facebook"></i>    Login with Facebook
+                            </a>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-12">
+                            <a href="#" class="btn btn-info btn-block" >
+                              <i class="icon-twitter"></i>    Login with Twitter
+                            </a>
+                        </div>
+                      </div>
+                </div>
+                <div class="main">  
+                    
+                <input type="text" class="form-control" placeholder="Email" autofocus>
+                    <input type="password" class="form-control" placeholder="Password">
+                 
+                    Are you a business? <a href=""> Get started here</a>
+                <span class="clearfix"></span>  
+                    </div>
+                <div class="login-footer">
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <div class="left-section">
+                            <a href="">Forgot your password?</a>
+                            <a href="">Sign up now</a>
+                          </div>
+                        </div>
+                        <div class="col-xs-6 col-md-6 pull-right">
+                            <button type="submit" class="btn btn-large btn-danger pull-right">Login</button>
+                        </div>
+                    </div>
+                </div>
+                  </form>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Modal -->
+    <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <div class="modal-dialog">
+        <div class="conatainer-modal">
+          <figure>
+            <ul class='tab-items'>
+              <li class='active-tab-item'>
+                <img src="{[{ currentItem.photo }]} ">
+              </li>
+              <li>
+                <header>
+                  <h3>Materiales</h3>
+                </header>
+                <article>
+                  {[{ currentItem.materials }]}
+                </article>
+              </li>
+              <li>
+                <header>
+                  <h3>Elaboracion</h3>
+                </header>
+                <ul class='step-items'>
+                  <li ng-repeat='step in currentItem.steps'>
+                    <header>
+                      <h4>{[{ step.step }]}</h4>
+                    </header>
+                    <p>{[{ step.descrip }]}</p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class='tabs-item'>
+              <li ng-repeat='tab in tabItems'>
+                <a href="" ng-click='showTab($index)'>{[{ tab.name }]}</a>
+              </li>
+            </ul>
+          </figure>
+          <header>
+            <h2>{[{ currentItem.name }]} </h2>
+          </header>
+          <p>{[{ currentItem.description }]} </p>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    {% block scripts %}
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script src="{{STATIC_URL}}js/freewall.js"></script>
+
+    <!--Angular library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-cookies.js"></script>
+
+    <!-- My scripts -->
+    <script type="text/javascript" src='{{ STATIC_URL }}js/app.js'></script>
+    
+    {% endblock scripts %}
+
+    {% block extra_scripts %}
+     <script type="text/javascript">
+        var wall = new freewall("#freewall");
+        wall.reset({
+          selector: '.brick',
+          animate: true,
+          cellW: 200,
+          cellH: 'auto',
+          onResize: function() {
+            wall.fitWidth();
+          }
+        });
+        
+        wall.container.find('.brick img').load(function() {
+          wall.fitWidth();
+        });
+
+
+      </script>
+
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {% endblock extra_scripts %}
+</body>
+</html>

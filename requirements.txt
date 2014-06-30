@@ -1,0 +1,6 @@
+South==0.8.4
+Django==1.6.5
+unipath==1.0
+django-admin-bootstrapped==1.6.4
+django-debug-toolbar==1.2.1
+Pillow==2.4.0
